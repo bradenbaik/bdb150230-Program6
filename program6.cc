@@ -61,16 +61,16 @@ int main()
   drawCDKMatrix(myMatrix, true);
 
   /*
-   * Dipslay a message
+   * Dipslay info from binary file
    */
-  //  string test = "another";
+  
   string fileName = "cs3377.bin"; // name of the binary file
   ifstream binInfile(fileName, ios::in|ios::binary); // opens binary  file
   BinaryFileHeader *myHeader = new BinaryFileHeader();
   BinaryFileRecord *myRecord = new BinaryFileRecord();
   binInfile.read((char *) myHeader, sizeof(BinaryFileHeader)); /* reads in the binary header file */
   
-  snprintf(bufferMagicNum, 32, "Magic: %#010X", myHeader->magicNumber); /* puts magic number in buffer as hexdecimal */
+  snprintf(bufferMagicNum, 32, "Magic: 0x%X", myHeader->magicNumber); /* puts magic number in buffer as hexadecimal */
   snprintf(bufferVersion, 32, "Version: %u", myHeader->versionNumber); /* puts version number into buffer */
   snprintf(bufferNumRecord, 64, "NumRecords: %lu", myHeader->numRecords); /* puts the number of records into the buffer */
   
